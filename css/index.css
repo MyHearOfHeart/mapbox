@@ -1,0 +1,289 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.top-nav {
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 1000;
+    background-color: rgb(211, 211, 211);
+}
+
+.content {
+    width: 1010px;
+    margin: 0 auto;
+}
+
+.location {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+}
+
+.content-city a:hover {
+    color: red;
+}
+
+.content-city {
+    margin: 0 auto;
+}
+
+.content-city:hover {
+    background-color: white;
+    border: 1px solid rgba(189, 196, 196, 0.5);
+    border-bottom: none;
+}
+
+.menu li {
+    list-style: none;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    margin: 0 20px 0 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgb(94, 91, 88);
+}
+
+.city {
+    margin: 0 auto;
+    font-size: 17px;
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+}
+
+.menu {
+    float: right;
+}
+
+.menu li a:hover {
+    color: tomato;
+}
+
+.city-list {
+    width: 320px;
+    height: 300px;
+    border: 1px solid rgb(204, 204, 204);
+    border-top: none;
+    display: none;
+    z-index: 1000;
+}
+
+.location:hover .city-list {
+    display: block;
+    position: absolute;
+    background-color: white;
+    box-shadow: 2px 2px 2px rgba(189, 196, 196, 0.5);
+}
+
+.location:hover .content-city {
+    background-color: white;
+}
+
+.my-car-list{
+    width: 300px;
+    height: 300px;
+    position:absolute;
+    background-color: rgb(223, 208, 243);
+    display: none;
+}
+.car-li:hover .my-car-list{
+    display: block;
+}
+.car-li:hover .car-menu{
+    background-color: rgb(223, 208, 243);
+    color: rgb(48, 201, 10);
+}
+#map{
+    width:100%;
+    height:700px;
+    border:1px solid rgba(189, 196, 196, 1);
+    background-color: #bfa;
+}
+
+#rose{
+    width:300px;
+    height:600px;
+    position: absolute;
+    top:40px;
+    left:0px;
+    /* background-color: rgba(255,255,255,0.4); */
+    background-color:rgba(0, 0,0,0.1);
+    box-shadow: 0 0 10px rgba(189, 196, 196, 0.5);
+    z-index: 999;
+}
+
+
+.help{
+    height:300px;
+    background-color: rgba(255, 255, 255,0.1);
+}
+.information{
+    position:absolute;
+    height:300px;
+    width:300px;
+    background-color: rgba(255, 255, 255,0.5);
+}
+.info-table{
+    margin:10px auto;
+    text-align: center;
+    height:280px;
+    width:280px;
+}
+#x {
+    float:left;
+    height: 50px;
+    width:250px;
+    font-size: 20px;
+}
+#y{
+    float:left;
+    height: 50px;
+    width:250px;
+    font-size: 20px;
+}
+#xl {
+    float:left;
+    height: 50px;
+    width:250px;
+    font-size: 20px;
+}
+#yl{
+    float:left;
+    height: 50px;
+    width:250px;
+    font-size: 20px;
+}
+.X{
+    text-align: center;
+    line-height: 50px;
+    float:left;
+    width:320px;
+    margin-top: 30px;
+}
+.Y{
+    text-align: center;
+    line-height: 50px;
+    float:left;
+    width:320px;
+    margin-top: 30px;
+}
+.x-span{
+
+    float:left;
+    width:50px;
+}
+.y-span{
+    float:left;
+    width:50px;
+}
+.button-div{
+    margin:0 auto;
+    width:100px;
+}
+
+#fly{
+    margin-top:  30px;
+    font-size: 23px;
+    line-height: 50px;
+    text-align: center;
+    width:100px;
+    height:50px;
+    border-radius: 15px;
+    background-color: rgb(119, 206, 228);
+    box-shadow: 0 0 10px rgba(189, 196, 196, 0.8);
+}
+#fly:hover{
+    background-color: rgb(64, 147, 168);
+}
+
+#tiao{
+    margin-top:  30px;
+    font-size: 23px;
+    line-height: 50px;
+    text-align: center;
+    width:100px;
+    height:50px;
+    border-radius: 15px;
+    background-color: rgb(119, 206, 228);
+    box-shadow: 0 0 10px rgba(189, 196, 196, 0.8);
+}
+#tiao:hover{
+    background-color: rgb(64, 147, 168);
+}
+
+#style-menu {
+    position: absolute;
+    background: #efefef;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.map-overlay {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    position: absolute;
+    width: 200px;
+    top: 70px;
+    left: 0;
+    padding: 10px;
+}
+
+.map-overlay .map-overlay-inner {
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.map-overlay-inner fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 10px;
+}
+
+.map-overlay-inner fieldset:last-child {
+    margin: 0;
+}
+
+.map-overlay-inner label {
+    display: block;
+    font-weight: bold;
+    margin: 0 0 5px;
+}
+
+.map-overlay-inner button {
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.map-overlay-inner button:focus {
+    outline: none;
+}
+
+.map-overlay-inner button:hover {
+    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
