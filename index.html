@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MapboxGL</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="top-nav">
+        <div class="content clearfix">
+            <div class="location">
+                <div class="content-city ">
+                    <i class="fas" style="color: red;font-size: 18px;"> &#xf3c5;</i>
+                    <a class="city" href="">武汉</a>
+                </div>
+
+                <div class="city-list">
+                    <div class="X">
+                        <div class="x-span">
+                          <span class="input-group-text">经度:</span>
+                        </div>
+                        <input type="text" class="form-control" id = "x">
+                      </div>
+                      <div class="Y">
+                        <div class="y-span">
+                          <span class="input-group-text">纬度:</span>
+                        </div>
+                        <input type="text" class="form-control" id = "y">
+                      </div>
+                      <div class="button-div">
+                        <input type="button" id = "fly" value = "跳转">
+                      </div>
+                </div>
+
+            </div>
+
+            <ul class="menu">
+                <li class = "car-li">
+                    <div class="car-menu">
+                        <a href="">中心</a>
+                        <a href=""><span class="fas myarraw">&#xf107</span></a>
+                    </div>
+                    <div class="my-car-list">
+                        <div class="X">
+                            <div class="x-span">
+                                <span class="input-group-text">经度:</span>
+                            </div>
+                            <input type="text" class="form-control" id = "xl">
+                        </div>
+                        <div class="Y">
+                            <div class="y-span">
+                                <span class="input-group-text">纬度:</span>
+                            </div>
+                            <input type="text" class="form-control" id = "yl">
+                        </div>
+                        <div class="button-div">
+                            <input type="button" id = "tiao" value = "跳转">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="main">
+        <!--底图-->
+        <div id="map" ></div>
+
+        <pre id='coordinates' class='coordinates'></pre>
+
+        <div id="rose">
+            <div class="help">
+                <!--点击切换地图样式-->
+                <div id="style-menu">
+                    <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" >
+                    <label for="satellite-v9">卫星</label>
+                    <input id="light-v10" type="radio" name="rtoggle" value="light">
+                    <label for="light-v10">亮</label>
+                    <input id="dark-v10" type="radio" name="rtoggle" value="dark">
+                    <label for="dark-v10">暗</label>
+                    <input id="streets-v11" type="radio" name="rtoggle" value="streets" checked="checked">
+                    <label for="streets-v11">街道</label>
+                    <input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors">
+                    <label for="outdoors-v11">户外</label>
+                </div>
+
+                <!--点击更换水域颜色-->
+                <div class="map-overlay top">
+                    <div class="map-overlay-inner">
+                        <fieldset>
+                            <label>选择水域颜色</label>
+                            <div id="swatches"></div>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+            <div class="information">
+                <table border="1" class="table table-dark info-table">
+                    <thead class="thead-dark">
+                        <tr class="table-primary">
+                            <td>属性</td>
+                            <td>数值</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-success">
+                            <td>当前中心点经度</td>
+                            <td id = "rd1"></td>
+                        </tr>
+                        <tr class="table-danger">
+                            <td>当前中心点纬度</td>
+                            <td id = "rd2"></td>
+                        </tr>
+                        <tr class="table-info">
+                            <td>Patch</td>
+                            <td id = "rd3"></td>
+                        </tr>
+                        <tr class="table-warning">
+                            <td>Bearing</td>
+                            <td id = "rd4"></td>
+                        </tr>
+                        <tr class="table-info">
+                            <td>Zoom</td>
+                            <td id = "rd5"></td>
+                        </tr>
+                        <tr class="table-warning">
+                            <td>开发者邮箱</td>
+                            <td>xiaolouqin@qq.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"></footer>
+    <script src = "./js/mapbox.js"></script>
+</body>
+
+</html>
