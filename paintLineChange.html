@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>使用表达式创建渐变色线条</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibXloZWFydG9mbHYiLCJhIjoiY2tuZW4xNjd0MWc5eTJ1cGt0YWk5bnE0MSJ9.gZEsmg0e8lcmJ6x1Xisn5A';
+
+    var map = window.map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        center: [111.242804, 32.930573],
+        zoom: 9,
+    });
+
+    var geojson = {
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    [ 111.045704, 33.169849 ],
+                    [ 111.08882, 33.181871 ],
+                    [ 111.12824, 33.15532 ],
+                    [ 111.146102, 33.12375 ],
+                    [ 111.179363, 33.115229 ],
+                    [ 111.192913, 33.071609 ],
+                    [ 111.152877, 33.039507 ],
+                    [ 111.221862, 33.042517 ],
+                    [ 111.258819, 33.006389 ],
+                    [ 111.273601, 32.971753 ],
+                    [ 111.242804, 32.930573 ],
+                    [ 111.255123, 32.883846 ],
+                    [ 111.276065, 32.903445 ],
+                    [ 111.293311, 32.859217 ],
+                    [ 111.380159, 32.829049 ],
+                    [ 111.41342, 32.757108 ],
+                    [ 111.475629, 32.760127 ],
+                    [ 111.458383, 32.726402 ],
+                    [ 111.513202, 32.674026 ],
+                    [ 111.530448, 32.628172 ],
+                    [ 111.577875, 32.593388 ]
+                ],
+                "type": "LineString"
+            }
+        }]
+    };
+
+    map.on('load', function () {
+        // 'line-gradient' can only be used with GeoJSON sources
+        // and the source must have the 'lineMetrics' option set to true
+        map.addSource('line', {
+            type: 'geojson',
+            lineMetrics: true,
+            data: geojson
+        });
+
+        // the layer must be of type 'line'
+        map.addLayer({
+            type: 'line',
+            source: 'line',
+            id: 'line',
+            paint: {
+                'line-color': 'red',
+                'line-width': 14,
+                // 'line-gradient' must be specified using an expression
+                // with the special 'line-progress' property
+                'line-gradient': [
+                    'interpolate',
+                    ['linear'],
+                    ['line-progress'],
+                    0, "blue",
+                    0.1, "royalblue",
+                    0.3, "cyan",
+                    0.5, "lime",
+                    0.7, "yellow",
+                    1, "red"
+                ]
+            },
+            layout: {
+                'line-cap': 'round',
+                'line-join': 'round'
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

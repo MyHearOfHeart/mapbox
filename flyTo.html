@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>将地图居中于被单击的符号上</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibXloZWFydG9mbHYiLCJhIjoiY2tuZW4xNjd0MWc5eTJ1cGt0YWk5bnE0MSJ9.gZEsmg0e8lcmJ6x1Xisn5A';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        center: [114.2908239022783, 30.570807560925644],
+        zoom: 10
+    });
+
+    map.on('load', function () {
+        // Add a symbol layer.
+        map.addLayer({
+            "id": "symbols",
+            "type": "symbol",
+            "source": {
+                "type": "geojson",
+                "data": {
+                    "type": "FeatureCollection",
+                    "features": [{
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [113.96123405849818, 30.60390925824133]
+                        },
+                        "properties": {
+                            "title": "Mapbox DC",
+                            "icon": "monument"
+                        }
+                    }, {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [114.2908239022783, 30.570807560925644]
+                        },
+                        "properties": {
+                            "title": "Mapbox SF",
+                            "icon": "harbor"
+                        }
+                    }]
+                }
+            },
+            "layout": {
+                "icon-image": "rocket-15"
+            }
+        });
+
+        // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
+        map.on('click', 'symbols', function (e) {
+            map.flyTo({center: e.features[0].geometry.coordinates});
+        });
+
+        // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
+        map.on('mouseenter', 'symbols', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'symbols', function () {
+            map.getCanvas().style.cursor = '';
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
+

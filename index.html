@@ -18,7 +18,7 @@
             <div class="location">
                 <div class="content-city ">
                     <i class="fas" style="color: red;font-size: 18px;"> &#xf3c5;</i>
-                    <a class="city" href="">武汉</a>
+                    <a class="city" href="">标志点</a>
                 </div>
 
                 <div class="city-list">
@@ -44,7 +44,7 @@
             <ul class="menu">
                 <li class = "car-li">
                     <div class="car-menu">
-                        <a href="">中心</a>
+                        <a href="">中心点</a>
                         <a href=""><span class="fas myarraw">&#xf107</span></a>
                     </div>
                     <div class="my-car-list">
@@ -71,6 +71,8 @@
     <main class="main">
         <!--底图-->
         <div id="map" ></div>
+
+        <div id='geocoder' class='geocoder'></div>
 
         <pre id='coordinates' class='coordinates'></pre>
 
@@ -141,6 +143,9 @@
     </main>
 
     <footer class="footer"></footer>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.css' type='text/css' />
     <script src = "./js/mapbox.js"></script>
 </body>
 

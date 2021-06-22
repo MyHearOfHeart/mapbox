@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>给线添加数据驱动属性的样式。</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibXloZWFydG9mbHYiLCJhIjoiY2tuZW4xNjd0MWc5eTJ1cGt0YWk5bnE0MSJ9.gZEsmg0e8lcmJ6x1Xisn5A';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [111.242804, 32.930573],
+        zoom: 9
+    });
+
+    map.on('load', function() {
+        map.addLayer({
+            'id': 'lines',
+            'type': 'line',
+            'source': {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': [{
+                        'type': 'Feature',
+                        'properties': {
+                            'color': '#F7455D' // red
+                        },
+                        'geometry': {
+                            'type': 'LineString',
+                            'coordinates': [
+                                [ 111.045704, 33.169849 ],
+                                [ 111.08882, 33.181871 ],
+                                [ 111.12824, 33.15532 ],
+                                [ 111.146102, 33.12375 ],
+                                [ 111.179363, 33.115229 ],
+                                [ 111.192913, 33.071609 ],
+                                [ 111.152877, 33.039507 ],
+                                [ 111.221862, 33.042517 ],
+                                [ 111.258819, 33.006389 ],
+                                [ 111.273601, 32.971753 ],
+                                [ 111.242804, 32.930573 ],
+                                [ 111.255123, 32.883846 ],
+                                [ 111.276065, 32.903445 ],
+                                [ 111.293311, 32.859217 ],
+                                [ 111.380159, 32.829049 ],
+                                [ 111.41342, 32.757108 ],
+                                [ 111.475629, 32.760127 ],
+                                [ 111.458383, 32.726402 ],
+                                [ 111.513202, 32.674026 ],
+                                [ 111.530448, 32.628172 ],
+                                [ 111.577875, 32.593388 ]
+                            ]
+                        }
+                    }]
+                }
+            },
+            'paint': {
+                'line-width': 3,
+                // Use a get expression (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-get)
+                // to set the line-color to a feature property value.
+                'line-color': ['get', 'color']
+            }
+        });
+    });
+</script>
+
+</body>
+</html>>
