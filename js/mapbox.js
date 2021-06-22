@@ -45,6 +45,13 @@ var scale = new mapboxgl.ScaleControl({
 map.addControl(scale)
 
 
+//添加地图位置搜索框
+var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+});
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
 //切换图层
 var layerList = document.getElementById('style-menu');
 var inputs = layerList.getElementsByTagName('input');
@@ -103,10 +110,6 @@ document.getElementById('coordinates').innerHTML = '当前点经度:' +marker.ge
 map.on('click', function (e) {
     document.getElementById('coordinates').innerHTML = '当前点经度:' +e.lngLat.lng+'<br/>当前点纬度:'+e.lngLat.lat;
     marker.setLngLat([e.lngLat.lng,e.lngLat.lat]).addTo(map)
-    var local = document.getElementsByClassName("city")[0];
-    if(e.lngLat.lng >= 114.25625713547356 &&e.lngLat.lng<= 114.4035773322758&& e.lngLat.lat >=30.45498882578397 && e.lngLat.lat<=30.55950700610994){
-        local.innerHTML = '洪山区';
-    }
     info_lng_lat.innerHTML = map.getCenter().lng;
     info_lng_lat2.innerHTML = map.getCenter().lat;
     info_lng_lat3.innerHTML = map.getPitch();

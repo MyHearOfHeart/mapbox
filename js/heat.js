@@ -6,17 +6,17 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibXloZWFydG9mbHYiLCJhIjoiY2tuZW4xNjd0MWc5eTJ1cGt0YWk5bnE0MSJ9.gZEsmg0e8lcmJ6x1Xisn5A';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/dark-v10',
+    style: 'mapbox://styles/mapbox/dark-v10',   //用暗地图显示效果会好一些
     center: [114.2908239022783, 30.570807560925644],
     zoom: 2
 });
 
 map.on('load', function() {
-    // Add a geojson point source.
-    // Heatmap layers also work with a vector tile source.
+    // 加入点geojson资源
+    // 热力图层也要使用矢量瓦片源.
     map.addSource('earthquakes', {
         "type": "geojson",
-        "data": "https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson"
+        "data": "https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson"   //用mapbox提供的geojson资源
     });
 
     map.addLayer({
@@ -25,7 +25,7 @@ map.on('load', function() {
         "source": "earthquakes",
         "maxzoom": 9,
         "paint": {
-            // Increase the heatmap weight based on frequency and property magnitude
+            // 根据频率和属性大小增加热图权重
             "heatmap-weight": [
                 "interpolate",
                 ["linear"],
@@ -33,7 +33,7 @@ map.on('load', function() {
                 0, 0,
                 6, 1
             ],
-            // Increase the heatmap color weight weight by zoom level
+            // 通过缩放级别增加热图颜色权重
             // heatmap-intensity is a multiplier on top of heatmap-weight
             "heatmap-intensity": [
                 "interpolate",
